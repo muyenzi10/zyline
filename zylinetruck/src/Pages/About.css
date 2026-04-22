@@ -1,0 +1,147 @@
+/* About.css - Zyline Transportation About Page Styles */
+/* All classes have 'about-' prefix to avoid conflicts with navbar/footer */
+
+/* Base Styles */
+* {
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background: #f8fafc;
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+}
+
+/* Main wrapper */
+.about-main-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  background: #f8fafc;
+  padding-top: 20px;
+}
+
+/* Hero Section */
+.about-hero {
+  background: linear-gradient(135deg, #0a2e3d 0%, #1a4a5f 100%);
+  border-bottom: 5px solid #f7b32b;
+  border-radius: 0 0 2rem 2rem;
+}
+
+.about-badge {
+  background-color: #f7b32b;
+  color: #0a2e3d;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* Stat Cards */
+.about-stat-card {
+  transition: all 0.25s ease-in-out;
+  border: none;
+  border-radius: 1.25rem;
+  background: white;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+}
+
+.about-stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.1);
+}
+
+/* Service Icons & Cards */
+.about-service-icon {
+  font-size: 2.5rem;
+  color: #1a4a5f;
+  transition: 0.2s;
+}
+
+.about-service-card {
+  border-radius: 1.25rem;
+  transition: all 0.2s;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  background: white;
+}
+
+.about-service-card:hover {
+  border-color: #f7b32b;
+  box-shadow: 0 20px 30px -15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+}
+
+/* Section Title with underline */
+.about-section-title {
+  position: relative;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.about-section-title:after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 4px;
+  background: #f7b32b;
+  margin-top: 12px;
+  border-radius: 4px;
+}
+
+/* Accent Text */
+.about-accent-text {
+  color: #f7b32b;
+  font-weight: 600;
+}
+
+/* Buttons */
+.about-btn-outline {
+  border: 2px solid #f7b32b;
+  color: #f7b32b;
+  background: transparent;
+  border-radius: 40px;
+  padding: 8px 28px;
+  font-weight: 600;
+  transition: 0.25s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.about-btn-outline:hover {
+  background: #f7b32b;
+  color: #0a2e3d;
+  border-color: #f7b32b;
+}
+
+.about-btn-solid {
+  background: #f7b32b;
+  color: #0a2e3d;
+  border: none;
+  border-radius: 40px;
+  padding: 10px 32px;
+  font-weight: 600;
+  transition: 0.25s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.about-btn-solid:hover {
+  background: #e0a120;
+  color: #0a2e3d;
+  transform: scale(1.02);
+}
+
+/* Quote Block */
+.about-quote-block {
+  background: #ffffffdd;
+  backdrop-filter: blur(2px);
+  border-left: 6px solid #f7b32b;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-hero .display-4 {
+    font-size: 2.2rem;
+  }
+  .about-stat-card {
+    margin-bottom: 1rem;
+  }
+}

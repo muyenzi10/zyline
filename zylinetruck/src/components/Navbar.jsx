@@ -72,15 +72,16 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="navbar" aria-label="Main navigation">
-        <div className="nav-container">
-        <Link to="/" className="logo" onClick={() => handleNavigation('/', 'home')}>
-  <img src={logo} alt="Zyline Logo" className="logo-img" />
-  <span className="logo-text">Zyline Transportation Services</span>
-</Link>
+      <nav className="zyline-navbar" aria-label="Main navigation">
+        <div className="zyline-nav-container">
+          <Link to="/" className="zyline-logo" onClick={() => handleNavigation('/', 'home')}>
+            <img src={logo} alt="Zyline Logo" className="zyline-logo-img" />
+            <span className="zyline-logo-text">Zyline Transportation Services</span>
+          </Link>
+          
           <button 
             ref={hamburgerRef}
-            className={`hamburger ${isMobileMenuOpen ? 'active' : ''}`} 
+            className={`zyline-hamburger ${isMobileMenuOpen ? 'active' : ''}`} 
             onClick={toggleMobileMenu}
             aria-label="Toggle navigation menu" 
             aria-expanded={isMobileMenuOpen}
@@ -92,12 +93,12 @@ const Navbar = () => {
 
           <ul 
             ref={navMenuRef}
-            className={`nav-menu ${isMobileMenuOpen ? 'active' : ''}`}
+            className={`zyline-nav-menu ${isMobileMenuOpen ? 'active' : ''}`}
           >
             <li>
               <Link 
                 to="/"
-                className={`nav-link ${activeLink === 'home' ? 'active' : ''}`}
+                className={`zyline-nav-link ${activeLink === 'home' ? 'active' : ''}`}
                 onClick={() => handleNavigation('/', 'home')}
               >
                 Home
@@ -106,7 +107,7 @@ const Navbar = () => {
             <li>
               <Link 
                 to="/about"
-                className={`nav-link ${activeLink === 'about' ? 'active' : ''}`}
+                className={`zyline-nav-link ${activeLink === 'about' ? 'active' : ''}`}
                 onClick={() => handleNavigation('/about', 'about')}
               >
                 About
@@ -115,7 +116,7 @@ const Navbar = () => {
             <li>
               <Link 
                 to="/service"
-                className={`nav-link ${activeLink === 'service' ? 'active' : ''}`}
+                className={`zyline-nav-link ${activeLink === 'service' ? 'active' : ''}`}
                 onClick={() => handleNavigation('/service', 'service')}
               >
                 Transportation Services
@@ -124,7 +125,7 @@ const Navbar = () => {
             <li>
               <Link 
                 to="/contact"
-                className={`nav-link contact-highlight ${activeLink === 'contact' ? 'active' : ''}`}
+                className={`zyline-nav-link zyline-contact-highlight ${activeLink === 'contact' ? 'active' : ''}`}
                 onClick={() => handleNavigation('/contact', 'contact')}
               >
                 Contact Us
@@ -135,7 +136,7 @@ const Navbar = () => {
       </nav>
       
       {isMobileMenuOpen && (
-        <div className="menu-overlay active" onClick={() => {
+        <div className="zyline-menu-overlay active" onClick={() => {
           setIsMobileMenuOpen(false);
           document.body.style.overflow = '';
         }}></div>

@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Footer.css';
 import { FaShuttleVan } from "react-icons/fa";
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -17,7 +18,7 @@ const Footer = () => {
         <div className="footer-section">
           <div className="footer-logo">
             <div className="logo-icon">
-            <FaShuttleVan/> 
+              <FaShuttleVan /> 
             </div>
             <span className="logo-text">Zyline transportation services LLC</span>
           </div>
@@ -60,25 +61,12 @@ const Footer = () => {
           <ul className="footer-links">
             <li><Link to="/" onClick={scrollToTop}>Home</Link></li>
             <li><Link to="/about" onClick={scrollToTop}>About Us</Link></li>
-            <li><Link to="/service" onClick={scrollToTop}>Our Services</Link></li>
+            <li><Link to="/service" onClick={scrollToTop}>Transportation Services</Link></li>
             <li><Link to="/contact" onClick={scrollToTop}>Contact Us</Link></li>
           </ul>
         </div>
 
-        {/* Services Section - Updated for Transportation */}
-        <div className="footer-section">
-          <h3 className="footer-title">Our Services</h3>
-          <ul className="footer-links">
-            <li><a href="#freight">Freight Transportation</a></li>
-            <li><a href="#logistics">Logistics Solutions</a></li>
-            <li><a href="#warehousing">Warehousing & Distribution</a></li>
-            <li><a href="#dedicated-fleet">Dedicated Fleet Services</a></li>
-            <li><a href="#expedited">Expedited Shipping</a></li>
-            <li><a href="#temperature-controlled">Temperature Controlled</a></li>
-          </ul>
-        </div>
-
-        {/* Contact Info Section - Updated with Utah Address */}
+        {/* Contact Info Section */}
         <div className="footer-section">
           <h3 className="footer-title">Contact Info</h3>
           <ul className="contact-info">
