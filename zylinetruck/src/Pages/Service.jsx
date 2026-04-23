@@ -1,91 +1,264 @@
-// TransportationServicesPage.js
-import React from 'react';
+import React, { useEffect, useCallback, useMemo } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import './Service.css';
 
-const Service = () => {
-  const servicesList = [
-    "Nationwide Expedited Freight",
-    "Sprinter Van Services",
-    "Cargo Van Delivery",
-    "Semi-Truck (Full Truckload – FTL)",
-    "Partial & LTL Loads",
-    "Last-Mile Delivery",
-    "Local, Regional & Long-Distance Hauling",
-    "Dedicated Loads",
-    "Same-Day & Next-Day Delivery",
-    "Flexible Scheduling",
-    "Real-Time Communication",
-    "Professional Handling"
+const Services = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100
+    });
+  }, []);
+
+  // Gallery data - 9 local images - CORRECTED PATHS (using /assets/services/)
+  const galleryItems = useMemo(() => [
+    { image: "/assets/services/truck0.jpg", title: "Fleet Vehicle 1", caption: "Our premium fleet vehicle ready for delivery" },
+    { image: "/assets/services/truck00.jpg", title: "Fleet Vehicle 2", caption: "Modern truck with advanced safety features" },
+    { image: "/assets/services/truck3.jpeg", title: "Fleet Vehicle 3", caption: "Heavy-duty truck for large shipments" },
+    { image: "/assets/services/truck4.png", title: "Fleet Vehicle 4", caption: "Reliable cargo van for urban deliveries" },
+    { image: "/assets/services/truck5.jpeg", title: "Fleet Vehicle 5", caption: "Sprinter van for priority shipments" },
+    { image: "/assets/services/truck6.jpeg", title: "Fleet Vehicle 6", caption: "Temperature-controlled refrigerated truck" },
+    { image: "/assets/services/truck7.jpg", title: "Fleet Vehicle 7", caption: "Flatbed truck for oversized loads" },
+    { image: "/assets/services/truck8.jpg", title: "Fleet Vehicle 8", caption: "Long-haul semi-truck for nationwide shipping" },
+    { image: "/assets/services/truck9.jpeg", title: "Fleet Vehicle 9", caption: "Our premium fleet vehicle ready for delivery" }
+  ], []);
+
+  // Lightbox state
+  const [lightboxOpen, setLightboxOpen] = React.useState(false);
+  const [currentIndex, setCurrentIndex] = React.useState(0);
+  const lightboxRef = React.useRef(null);
+  const lightboxImageRef = React.useRef(null);
+  const lightboxCaptionRef = React.useRef(null);
+  const lightboxCounterRef = React.useRef(null);
+
+  // Function to update lightbox content
+  const updateLightboxContent = useCallback(() => {
+    const item = galleryItems[currentIndex];
+    if (lightboxImageRef.current) lightboxImageRef.current.src = item.image;
+    if (lightboxCaptionRef.current) lightboxCaptionRef.current.textContent = item.caption;
+    if (lightboxCounterRef.current) lightboxCounterRef.current.textContent = `${currentIndex + 1} of ${galleryItems.length}`;
+  }, [currentIndex, galleryItems]);
+
+  // Function to go to previous image
+  const prevImage = useCallback(() => {
+    setCurrentIndex((prev) => (prev - 1 + galleryItems.length) % galleryItems.length);
+  }, [galleryItems.length]);
+
+  // Function to go to next image
+  const nextImage = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % galleryItems.length);
+  }, [galleryItems.length]);
+
+  // Function to open lightbox
+  const openLightbox = (index) => {
+    setCurrentIndex(index);
+    setLightboxOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  // Function to close lightbox
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+    document.body.style.overflow = '';
+  };
+
+  // Update lightbox content when currentIndex changes
+  useEffect(() => {
+    if (lightboxOpen) {
+      updateLightboxContent();
+    }
+  }, [currentIndex, lightboxOpen, updateLightboxContent]);
+
+  // Handle keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (!lightboxOpen) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') prevImage();
+      if (e.key === 'ArrowRight') nextImage();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [lightboxOpen, prevImage, nextImage]);
+
+  // Handle click outside lightbox
+  const handleLightboxClick = (e) => {
+    if (e.target === lightboxRef.current) closeLightbox();
+  };
+
+  const services = [
+    { icon: "bi-lightning-charge-fill", title: "Expedited Freight", description: "Fast nationwide shipping for urgent and time-sensitive loads." },
+    { icon: "bi-truck", title: "Sprinter Van Services", description: "Ideal for small, priority shipments that need immediate delivery." },
+    { icon: "bi-box-seam", title: "Cargo Van Delivery", description: "Affordable transportation for small to mid-size freight." },
+    { icon: "bi-truck-front", title: "Full Truckload (FTL)", description: "Semi-truck solutions for large and high-volume shipments." },
+    { icon: "bi-layers", title: "Partial & LTL Loads", description: "Flexible shipping options for freight that doesn't require a full truck." },
+    { icon: "bi-house-door", title: "Last-Mile Delivery", description: "Efficient final delivery directly to your customer or destination." },
+    { icon: "bi-star-fill", title: "Dedicated Loads", description: "Direct transport with no unnecessary stops or transfers." },
+    { icon: "bi-map", title: "Local, Regional & Nationwide Hauling", description: "Serving businesses wherever they operate." }
   ];
 
-  const whyChooseUs = [
-    "Reliable, On-Time Delivery – We understand that delays cost money. Our team is committed to delivering every load safely and on schedule.",
-    "Nationwide Coverage – Whether local or across the country, we have the capacity to move your freight wherever it needs to go.",
-    "Versatile Fleet – From sprinter vans and cargo vans to semi-trucks, we handle everything from small urgent shipments to full truckloads.",
-    "Expedited Solutions – When time is critical, we move fast with dedicated, no-delay transportation.",
-    "Direct & Dedicated Service – Your freight goes straight to its destination—no unnecessary stops or transfers.",
-    "Clear Communication – We keep you updated so you always know where your shipment is.",
-    "Flexible & Scalable – We adapt to your business needs, whether it's a one-time shipment or ongoing logistics support.",
-    "Professional & Careful Handling – Every load is treated with the highest level of care and attention.",
-    "Customer-First Approach – We focus on building long-term partnerships by delivering consistent, high-quality service."
+  const trustPoints = [
+    "✔ On-Time Deliveries",
+    "✔ Nationwide Coverage",
+    "✔ Fast Response Times",
+    "✔ Sprinter Vans, Cargo Vans & Semi-Trucks",
+    "✔ Dedicated & Expedited Service",
+    "✔ Real-Time Shipment Updates",
+    "✔ Safe & Professional Freight Handling",
+    "✔ Flexible Scheduling",
+    "✔ Customer-First Service"
   ];
 
   return (
-    <div>
-      {/* Hero Section */}
+    <>
+      {/* SECTION 1: HERO SECTION */}
       <section className="services-hero">
-        <div className="container">
-          <h1>Our Transportation Services</h1>
-          <p className="subtitle">Fast, reliable solutions for businesses nationwide</p>
+        <div className="container hero-content">
+          <div className="text-center" data-aos="fade-up" data-aos-duration="800">
+            <span className="hero-badge">✦ ZYLINE TRANSPORTATION SERVICES LLC ✦</span>
+            <h1 className="hero-title fw-bold">OUR SERVICES</h1>
+            <p className="hero-subtitle mx-auto">Transportation Services Built for Your Business</p>
+
+            <div className="hero-buttons">
+              <a href="#services" className="btn-hero-primary">
+                Explore Services <i className="bi bi-arrow-right ms-2"></i>
+              </a>
+            </div>
+
+            <div className="hero-stats">
+              <div className="stat-item">
+                <span className="stat-number">50+</span>
+                <span className="stat-label">States Covered</span>
+              </div>
+              <div className="stat-item">
+                <span className="stat-number">500+</span>
+                <span className="stat-label">Partners</span>
+              </div>
+              <div className="stat-item">
+                <span className="stat-number">98%</span>
+                <span className="stat-label">On-Time Delivery</span>
+              </div>
+              <div className="stat-item">
+                <span className="stat-number">24/7</span>
+                <span className="stat-label">Support</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="scroll-indicator" onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}>
+          <div className="mouse"></div>
         </div>
       </section>
 
-      {/* Services Introduction */}
-      <section className="section">
-        <div className="container">
-          <div className="services-intro">
-            <p>
-              At Zyline Transportation Services LLC, we provide fast, reliable transportation solutions using 
-              sprinter vans, cargo vans, and semi-trucks — serving businesses nationwide with both time-sensitive 
-              and large-scale freight needs.
-            </p>
+      {/* SECTION 2: SERVICES GRID */}
+      <section className="container py-5" id="services">
+        <div className="services-header" data-aos="fade-up">
+          <h2 className="services-title">OUR SERVICES</h2>
+          <p className="services-subtitle">Transportation Services Built for Your Business</p>
+        </div>
+
+        <div className="row g-4">
+          {services.map((service, index) => (
+            <div className="col-md-6 col-lg-4" key={index} data-aos="fade-up" data-aos-delay={100 + index * 50}>
+              <div className="service-card p-4">
+                <div className="service-icon"><i className={`bi ${service.icon}`}></i></div>
+                <h4 className="service-title">{service.title}</h4>
+                <p className="service-description">{service.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* SECTION 3: FLEET GALLERY */}
+      <section className="container my-5">
+        <div className="gallery-section p-5" data-aos="fade-up">
+          <div className="text-center mb-5">
+            <h2 className="section-title d-inline-block text-center">Our Fleet Gallery</h2>
+            <p className="text-secondary mt-3">Click on any image to view in full size with navigation</p>
           </div>
-          
-          <h2>What We Offer</h2>
-          <div className="services-grid">
-            {servicesList.map((service, index) => (
-              <div key={index} className="service-card">
-                <div className="service-icon">🚚</div>
-                <h3>{service}</h3>
+          <div className="row g-4" id="gallery-container">
+            {galleryItems.map((item, index) => (
+              <div className="col-md-6 col-lg-4" key={index} data-aos="zoom-in" data-aos-delay={100 + index * 50}>
+                <div className="gallery-item" onClick={() => openLightbox(index)}>
+                  <img src={item.image} alt={`Fleet Truck ${index + 1}`} />
+                  <div className="zoom-icon"><i className="bi bi-search"></i></div>
+                  <div className="gallery-overlay"><p>Zyline Transportation Services</p></div>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
-      <section className="section why-choose-section">
-        <div className="container">
-          <h2>Why Choose Us</h2>
-          <div className="why-grid">
-            {whyChooseUs.map((reason, index) => (
-              <div key={index} className="reason-card">
-                <div className="reason-number">{index + 1}</div>
-                <p>{reason}</p>
-              </div>
-            ))}
+      {/* Custom Lightbox Modal */}
+      {lightboxOpen && (
+        <div className="lightbox-overlay active" ref={lightboxRef} onClick={handleLightboxClick}>
+          <div className="lightbox-container">
+            <button className="lightbox-close" onClick={closeLightbox}><i className="bi bi-x-lg"></i></button>
+            <button className="lightbox-prev" onClick={prevImage}><i className="bi bi-chevron-left"></i></button>
+            <img className="lightbox-image" ref={lightboxImageRef} src="" alt="" />
+            <button className="lightbox-next" onClick={nextImage}><i className="bi bi-chevron-right"></i></button>
+            <div className="lightbox-caption" ref={lightboxCaptionRef}></div>
+            <div className="lightbox-counter" ref={lightboxCounterRef}></div>
           </div>
-          
-          {/* Peace of Mind Message */}
-          <div className="peace-mind">
-            <p>
-              <strong>At Zyline Transportation Services LLC, we don't just move freight — we provide peace of mind.</strong> 
-              Our commitment to reliability, speed, and service makes us a trusted partner for businesses that can't afford delays.
-            </p>
+        </div>
+      )}
+
+      {/* SECTION 4: WHY CHOOSE US */}
+      <section className="container my-5">
+        <div className="why-choose-us p-5" data-aos="fade-up">
+          <div className="row align-items-center">
+            <div className="col-lg-7 mb-4 mb-lg-0">
+              <span className="badge-service d-inline-block mb-3">✦ WHY CHOOSE US</span>
+              <h2 className="display-6 fw-bold" style={{ color: "#0a2e3d" }}>Why Businesses Trust Zyline Transportation Services LLC</h2>
+              <div className="row mt-4">
+                <div className="col-md-6">
+                  {trustPoints.slice(0, 5).map((point, i) => (
+                    <div className="check-item" key={i}>
+                      <i className="bi bi-check-circle-fill"></i>
+                      <span>{point}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="col-md-6">
+                  {trustPoints.slice(5).map((point, i) => (
+                    <div className="check-item" key={i}>
+                      <i className="bi bi-check-circle-fill"></i>
+                      <span>{point}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="mt-4 p-3 bg-white rounded-4" style={{ borderLeft: "4px solid #ff6b35" }} data-aos="fade-right">
+                <p className="mb-0 fst-italic fw-semibold">"We don't just move freight — we help keep your business moving."</p>
+              </div>
+            </div>
+            <div className="col-lg-5 text-center">
+              <i className="bi bi-truck-front display-1 floating-icon" style={{ color: "#ff6b35", opacity: 0.3 }}></i>
+              <i className="bi bi-arrow-repeat display-1 mx-3 floating-icon" style={{ color: "#ff8c42", opacity: 0.3, animationDelay: "0.5s" }}></i>
+              <i className="bi bi-clock-history display-1 floating-icon" style={{ color: "#ff6b35", opacity: 0.3, animationDelay: "1s" }}></i>
+            </div>
           </div>
         </div>
       </section>
-    </div>
+
+      {/* SECTION 5: MISSION SECTION */}
+      <section className="container my-5">
+        <div className="mission-section p-5 text-white text-center" data-aos="flip-up">
+          <h2 className="display-6 fw-bold mb-3">OUR MISSION</h2>
+          <p className="fs-4 fw-semibold mb-2">Reliable Transportation. Long-Term Partnerships.</p>
+          <p className="lead opacity-75 mx-auto" style={{ maxWidth: "800px" }}>
+            Our mission is to provide dependable, on-time transportation solutions businesses can trust 
+            while building lasting relationships through professionalism, reliability, and exceptional customer service.
+          </p>
+        </div>
+      </section>
+    </>
   );
 };
 
-export default Service;
+export default Services;
