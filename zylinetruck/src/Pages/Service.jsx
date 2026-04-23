@@ -14,15 +14,15 @@ const Services = () => {
 
   // Gallery data - 9 local images - CORRECTED PATHS (using /assets/services/)
   const galleryItems = useMemo(() => [
-    { image: "/assets/services/truck0.jpg", title: "Fleet Vehicle 1", caption: "Our premium fleet vehicle ready for delivery" },
-    { image: "/assets/services/truck00.jpg", title: "Fleet Vehicle 2", caption: "Modern truck with advanced safety features" },
-    { image: "/assets/services/truck3.jpeg", title: "Fleet Vehicle 3", caption: "Heavy-duty truck for large shipments" },
-    { image: "/assets/services/truck4.png", title: "Fleet Vehicle 4", caption: "Reliable cargo van for urban deliveries" },
-    { image: "/assets/services/truck5.jpeg", title: "Fleet Vehicle 5", caption: "Sprinter van for priority shipments" },
-    { image: "/assets/services/truck6.jpeg", title: "Fleet Vehicle 6", caption: "Temperature-controlled refrigerated truck" },
-    { image: "/assets/services/truck7.jpg", title: "Fleet Vehicle 7", caption: "Flatbed truck for oversized loads" },
-    { image: "/assets/services/truck8.jpg", title: "Fleet Vehicle 8", caption: "Long-haul semi-truck for nationwide shipping" },
-    { image: "/assets/services/truck9.jpeg", title: "Fleet Vehicle 9", caption: "Our premium fleet vehicle ready for delivery" }
+    { image: "/assets/services/truck0.jpg", title: "Zyline Transportation Services" },
+    { image: "/assets/services/truck00.jpg", title: "Zyline Transportation Services"},
+    { image: "/assets/services/truck3.jpeg", title: "Zyline Transportation Services"},
+    { image: "/assets/services/truck4.png", title: "Zyline Transportation Services"},
+    { image: "/assets/services/truck5.jpeg", title: "Zyline Transportation Services" },
+    { image: "/assets/services/truck6.jpeg", title: "Zyline Transportation Services"},
+    { image: "/assets/services/truck7.jpg", title: "Zyline Transportation Services" },
+    { image: "/assets/services/truck8.jpg", title: "Zyline Transportation Services" },
+    { image: "/assets/services/truck9.jpeg", title: "Zyline Transportation Services" }
   ], []);
 
   // Lightbox state
