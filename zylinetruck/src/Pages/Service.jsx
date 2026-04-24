@@ -19,9 +19,9 @@ const Services = () => {
     { image: "/assets/services/truck3.jpeg", title: "Zyline Transportation Services"},
     { image: "/assets/services/truck4.png", title: "Zyline Transportation Services"},
     { image: "/assets/services/truck5.jpeg", title: "Zyline Transportation Services" },
-    { image: "/assets/services/truck6.jpeg", title: "Zyline Transportation Services"},
+    { image: "/assets/services/truck6.png", title: "Zyline Transportation Services"},
     { image: "/assets/services/truck7.jpg", title: "Zyline Transportation Services" },
-    { image: "/assets/services/truck8.jpg", title: "Zyline Transportation Services" },
+    { image: "/assets/services/truck8.png", title: "Zyline Transportation Services" },
     { image: "/assets/services/truck9.jpeg", title: "Zyline Transportation Services" }
   ], []);
 
