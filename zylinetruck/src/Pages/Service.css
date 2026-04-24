@@ -1,34 +1,43 @@
-/* Services.css - Complete styles for Services component */
+/* Service.css - Complete styles with navbar spacer fix */
 
-* {
-  font-family: 'Inter', sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* ========================================
+   NAVBAR SPACER - FIX FOR FIXED NAVBAR
+======================================== */
+.zyline-services-nav-spacer {
+  height: 80px;
+  width: 100%;
+  background: transparent;
 }
 
-body {
-  background: #f8fafc;
-  overflow-x: hidden;
+@media (max-width: 768px) {
+  .zyline-services-nav-spacer {
+    height: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .zyline-services-nav-spacer {
+    height: 60px;
+  }
 }
 
 /* ========================================
    HERO SECTION
 ======================================== */
-.services-hero {
+.zyline-services-hero {
   position: relative;
   min-height: 85vh;
   display: flex;
   align-items: center;
   background: linear-gradient(135deg, rgba(10, 46, 61, 0.92) 0%, rgba(26, 74, 95, 0.86) 50%, rgba(10, 46, 61, 0.92) 100%), 
-              url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1920&h=1080&fit=crop');
+              url('../../public/assets/services/truck2.jpg');
   background-size: cover;
   background-position: center 35%;
   background-attachment: fixed;
   overflow: hidden;
 }
 
-.services-hero::before {
+.zyline-services-hero::before {
   content: '';
   position: absolute;
   top: 0;
@@ -37,22 +46,22 @@ body {
   bottom: 0;
   background-image: radial-gradient(rgba(255,107,53,0.12) 1px, transparent 1px);
   background-size: 50px 50px;
-  animation: particleMove 20s linear infinite;
+  animation: zyline-services-particleMove 20s linear infinite;
   pointer-events: none;
 }
 
-@keyframes particleMove {
+@keyframes zyline-services-particleMove {
   0% { background-position: 0 0; }
   100% { background-position: 100px 100px; }
 }
 
-.hero-content {
+.zyline-services-hero-content {
   position: relative;
   z-index: 10;
   width: 100%;
 }
 
-.hero-badge {
+.zyline-services-hero-badge {
   display: inline-block;
   background: rgba(255,107,53,0.15);
   backdrop-filter: blur(12px);
@@ -65,15 +74,15 @@ body {
   border: 1px solid rgba(255,107,53,0.4);
   color: #ff8c42;
   text-transform: uppercase;
-  animation: borderPulse 2s infinite;
+  animation: zyline-services-borderPulse 2s infinite;
 }
 
-@keyframes borderPulse {
+@keyframes zyline-services-borderPulse {
   0%, 100% { border-color: rgba(255,107,53,0.4); box-shadow: 0 0 0 0 rgba(255,107,53,0.2); }
   50% { border-color: rgba(255,107,53,0.8); box-shadow: 0 0 20px rgba(255,107,53,0.3); }
 }
 
-.hero-title {
+.zyline-services-hero-title {
   font-size: 4.5rem;
   font-weight: 800;
   margin-bottom: 1rem;
@@ -84,7 +93,7 @@ body {
   letter-spacing: -0.02em;
 }
 
-.hero-subtitle {
+.zyline-services-hero-subtitle {
   font-size: 1.4rem;
   font-weight: 400;
   opacity: 0.92;
@@ -94,7 +103,7 @@ body {
   color: rgba(255,255,255,0.95);
 }
 
-.hero-buttons {
+.zyline-services-hero-buttons {
   margin-top: 2.5rem;
   display: flex;
   gap: 1.2rem;
@@ -102,7 +111,7 @@ body {
   flex-wrap: wrap;
 }
 
-.btn-hero-primary {
+.zyline-services-btn-hero-primary {
   background: linear-gradient(135deg, #ff6b35, #ff8c42);
   border: none;
   border-radius: 60px;
@@ -118,7 +127,7 @@ body {
   box-shadow: 0 5px 20px rgba(255,107,53,0.3);
 }
 
-.btn-hero-primary::before {
+.zyline-services-btn-hero-primary::before {
   content: '';
   position: absolute;
   top: 0;
@@ -129,17 +138,17 @@ body {
   transition: left 0.5s ease;
 }
 
-.btn-hero-primary:hover::before {
+.zyline-services-btn-hero-primary:hover::before {
   left: 100%;
 }
 
-.btn-hero-primary:hover {
+.zyline-services-btn-hero-primary:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 30px rgba(255,107,53,0.5);
   color: white;
 }
 
-.hero-stats {
+.zyline-services-hero-stats {
   margin-top: 3.5rem;
   display: flex;
   justify-content: center;
@@ -147,7 +156,7 @@ body {
   flex-wrap: wrap;
 }
 
-.stat-item {
+.zyline-services-stat-item {
   text-align: center;
   backdrop-filter: blur(10px);
   background: rgba(255,255,255,0.05);
@@ -156,7 +165,7 @@ body {
   border: 1px solid rgba(255,255,255,0.1);
 }
 
-.stat-number {
+.zyline-services-stat-number {
   font-size: 1.8rem;
   font-weight: 800;
   color: #ff8c42;
@@ -164,14 +173,14 @@ body {
   line-height: 1;
 }
 
-.stat-label {
+.zyline-services-stat-label {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   color: rgba(255,255,255,0.7);
 }
 
-.scroll-indicator {
+.zyline-services-scroll-indicator {
   position: absolute;
   bottom: 30px;
   left: 50%;
@@ -180,7 +189,7 @@ body {
   cursor: pointer;
 }
 
-.mouse {
+.zyline-services-mouse {
   width: 30px;
   height: 50px;
   border: 2px solid rgba(255,255,255,0.6);
@@ -190,7 +199,7 @@ body {
   transition: border-color 0.3s;
 }
 
-.mouse::before {
+.zyline-services-mouse::before {
   content: '';
   width: 4px;
   height: 10px;
@@ -200,10 +209,10 @@ body {
   left: 50%;
   transform: translateX(-50%);
   border-radius: 2px;
-  animation: scrollWheel 1.8s infinite;
+  animation: zyline-services-scrollWheel 1.8s infinite;
 }
 
-@keyframes scrollWheel {
+@keyframes zyline-services-scrollWheel {
   0% { opacity: 1; transform: translateX(-50%) translateY(0); }
   80% { opacity: 0; transform: translateX(-50%) translateY(15px); }
   100% { opacity: 0; transform: translateX(-50%) translateY(15px); }
@@ -212,26 +221,26 @@ body {
 /* ========================================
    SERVICE CARDS SECTION
 ======================================== */
-.services-header {
+.zyline-services-header {
   text-align: center;
   margin-bottom: 3rem;
 }
 
-.services-title {
+.zyline-services-title {
   font-size: 2.8rem;
   font-weight: 800;
   color: #0a2e3d;
   margin-bottom: 1rem;
 }
 
-.services-subtitle {
+.zyline-services-subtitle {
   color: #6c757d;
   font-size: 1.2rem;
   max-width: 600px;
   margin: 0 auto;
 }
 
-.service-card {
+.zyline-services-card {
   border: none;
   border-radius: 1.5rem;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -243,7 +252,7 @@ body {
   cursor: pointer;
 }
 
-.service-card::before {
+.zyline-services-card::before {
   content: '';
   position: absolute;
   top: 0;
@@ -254,16 +263,16 @@ body {
   transition: left 0.6s ease;
 }
 
-.service-card:hover::before {
+.zyline-services-card:hover::before {
   left: 100%;
 }
 
-.service-card:hover {
+.zyline-services-card:hover {
   transform: translateY(-12px);
   box-shadow: 0 25px 45px rgba(255,107,53,0.15);
 }
 
-.service-icon {
+.zyline-services-icon {
   width: 75px;
   height: 75px;
   background: linear-gradient(135deg, #ff6b35, #ff8c42);
@@ -275,17 +284,17 @@ body {
   transition: all 0.3s ease;
 }
 
-.service-card:hover .service-icon {
+.zyline-services-card:hover .zyline-services-icon {
   transform: scale(1.05) rotate(5deg);
   border-radius: 25px;
 }
 
-.service-icon i {
+.zyline-services-icon i {
   font-size: 2.2rem;
   color: white;
 }
 
-.service-title {
+.zyline-services-card-title {
   font-size: 1.3rem;
   font-weight: 700;
   margin-bottom: 0.75rem;
@@ -293,11 +302,11 @@ body {
   transition: color 0.3s ease;
 }
 
-.service-card:hover .service-title {
+.zyline-services-card:hover .zyline-services-card-title {
   color: #ff6b35;
 }
 
-.service-description {
+.zyline-services-card-description {
   color: #6c757d;
   line-height: 1.5;
   margin-bottom: 0;
@@ -306,30 +315,30 @@ body {
 /* ========================================
    GALLERY SECTION
 ======================================== */
-.gallery-section {
+.zyline-services-gallery-section {
   background: linear-gradient(135deg, #fef9f0 0%, #fff5e6 100%);
   border-radius: 2rem;
 }
 
-.gallery-item {
+.zyline-services-gallery-item {
   position: relative;
   overflow: hidden;
   border-radius: 1rem;
   cursor: pointer;
 }
 
-.gallery-item img {
+.zyline-services-gallery-item img {
   width: 100%;
   height: 250px;
   object-fit: cover;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.gallery-item:hover img {
+.zyline-services-gallery-item:hover img {
   transform: scale(1.1);
 }
 
-.gallery-overlay {
+.zyline-services-gallery-overlay {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -340,132 +349,17 @@ body {
   transition: transform 0.3s ease;
 }
 
-.gallery-item:hover .gallery-overlay {
+.zyline-services-gallery-item:hover .zyline-services-gallery-overlay {
   transform: translateY(0);
 }
 
-.gallery-overlay p {
+.zyline-services-gallery-overlay p {
   color: white;
   margin: 0;
   font-weight: 600;
 }
 
-/* ========================================
-   CUSTOM LIGHTBOX STYLES
-======================================== */
-.lightbox-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.95);
-  z-index: 9999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 1;
-  transition: opacity 0.3s ease;
-}
-
-.lightbox-container {
-  position: relative;
-  max-width: 90%;
-  max-height: 90%;
-  animation: zoomIn 0.3s ease;
-}
-
-@keyframes zoomIn {
-  from {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-.lightbox-image {
-  max-width: 100%;
-  max-height: 80vh;
-  border-radius: 10px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-}
-
-.lightbox-close {
-  position: absolute;
-  top: -40px;
-  right: -40px;
-  background: rgba(255,107,53,0.9);
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  color: white;
-  font-size: 1.5rem;
-  border: none;
-}
-
-.lightbox-close:hover {
-  background: #ff6b35;
-  transform: rotate(90deg);
-}
-
-.lightbox-prev,
-.lightbox-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255,107,53,0.8);
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  color: white;
-  font-size: 1.8rem;
-  border: none;
-}
-
-.lightbox-prev {
-  left: -70px;
-}
-
-.lightbox-next {
-  right: -70px;
-}
-
-.lightbox-prev:hover,
-.lightbox-next:hover {
-  background: #ff6b35;
-  transform: translateY(-50%) scale(1.1);
-}
-
-.lightbox-caption {
-  text-align: center;
-  margin-top: 20px;
-  color: #ff8c42;
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.lightbox-counter {
-  text-align: center;
-  margin-top: 10px;
-  color: rgba(255,255,255,0.7);
-  font-size: 0.85rem;
-}
-
-/* Zoom Icon on Gallery Items */
-.zoom-icon {
+.zyline-services-zoom-icon {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -483,81 +377,197 @@ body {
   pointer-events: none;
 }
 
-.gallery-item:hover .zoom-icon {
+.zyline-services-gallery-item:hover .zyline-services-zoom-icon {
   opacity: 1;
 }
 
-.zoom-icon i {
+.zyline-services-zoom-icon i {
   color: white;
   font-size: 1.5rem;
 }
 
 /* ========================================
+   LIGHTBOX STYLES
+======================================== */
+.zyline-services-lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.zyline-services-lightbox-container {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  animation: zyline-services-zoomIn 0.3s ease;
+}
+
+@keyframes zyline-services-zoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.zyline-services-lightbox-image {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 10px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+.zyline-services-lightbox-close {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  background: rgba(255,107,53,0.9);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 1.5rem;
+  border: none;
+}
+
+.zyline-services-lightbox-close:hover {
+  background: #ff6b35;
+  transform: rotate(90deg);
+}
+
+.zyline-services-lightbox-prev,
+.zyline-services-lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,107,53,0.8);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 1.8rem;
+  border: none;
+}
+
+.zyline-services-lightbox-prev {
+  left: -70px;
+}
+
+.zyline-services-lightbox-next {
+  right: -70px;
+}
+
+.zyline-services-lightbox-prev:hover,
+.zyline-services-lightbox-next:hover {
+  background: #ff6b35;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.zyline-services-lightbox-caption {
+  text-align: center;
+  margin-top: 20px;
+  color: #ff8c42;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.zyline-services-lightbox-counter {
+  text-align: center;
+  margin-top: 10px;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.85rem;
+}
+
+/* ========================================
    WHY CHOOSE US SECTION
 ======================================== */
-.why-choose-us {
+.zyline-services-why-choose-us {
   background: linear-gradient(135deg, #ffffff 0%, #fef9f0 100%);
   border-radius: 2rem;
   box-shadow: 0 20px 40px rgba(0,0,0,0.05);
 }
 
-.check-item {
+.zyline-services-check-item {
   display: flex;
   align-items: center;
   gap: 12px;
   margin-bottom: 1rem;
-  animation: slideInRight 0.5s ease-out;
+  animation: zyline-services-slideInRight 0.5s ease-out;
   opacity: 0;
   animation-fill-mode: forwards;
 }
 
-.check-item:nth-child(1) { animation-delay: 0.1s; }
-.check-item:nth-child(2) { animation-delay: 0.2s; }
-.check-item:nth-child(3) { animation-delay: 0.3s; }
-.check-item:nth-child(4) { animation-delay: 0.4s; }
-.check-item:nth-child(5) { animation-delay: 0.5s; }
-.check-item:nth-child(6) { animation-delay: 0.6s; }
-.check-item:nth-child(7) { animation-delay: 0.7s; }
-.check-item:nth-child(8) { animation-delay: 0.8s; }
-.check-item:nth-child(9) { animation-delay: 0.9s; }
+.zyline-services-check-item:nth-child(1) { animation-delay: 0.1s; }
+.zyline-services-check-item:nth-child(2) { animation-delay: 0.2s; }
+.zyline-services-check-item:nth-child(3) { animation-delay: 0.3s; }
+.zyline-services-check-item:nth-child(4) { animation-delay: 0.4s; }
+.zyline-services-check-item:nth-child(5) { animation-delay: 0.5s; }
+.zyline-services-check-item:nth-child(6) { animation-delay: 0.6s; }
+.zyline-services-check-item:nth-child(7) { animation-delay: 0.7s; }
+.zyline-services-check-item:nth-child(8) { animation-delay: 0.8s; }
+.zyline-services-check-item:nth-child(9) { animation-delay: 0.9s; }
 
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+@keyframes zyline-services-slideInRight {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
-.check-item i {
+.zyline-services-check-item i {
   color: #ff6b35;
   font-size: 1.3rem;
+}
+
+.zyline-services-badge {
+  background: rgba(255, 107, 53, 0.1);
+  color: #ff6b35;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  animation: zyline-services-pulse 2s infinite;
+}
+
+@keyframes zyline-services-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
 }
 
 /* ========================================
    MISSION SECTION
 ======================================== */
-.mission-section {
+.zyline-services-mission-section {
   background: linear-gradient(135deg, #0a2e3d 0%, #1a4a5f 100%);
   border-radius: 2rem;
   position: relative;
   overflow: hidden;
 }
 
-.mission-section::after {
+.zyline-services-mission-section::after {
   content: '🚛';
   position: absolute;
   bottom: 20px;
   right: 20px;
   font-size: 100px;
   opacity: 0.08;
-  animation: float 3s ease-in-out infinite;
+  animation: zyline-services-float 3s ease-in-out infinite;
 }
 
-@keyframes float {
+@keyframes zyline-services-float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
 }
@@ -565,13 +575,13 @@ body {
 /* ========================================
    SECTION TITLES
 ======================================== */
-.section-title {
+.zyline-services-section-title {
   position: relative;
   font-weight: 700;
   margin-bottom: 1.5rem;
 }
 
-.section-title:after {
+.zyline-services-section-title:after {
   content: "";
   display: block;
   width: 70px;
@@ -579,78 +589,64 @@ body {
   background: linear-gradient(90deg, #ff6b35, #ff8c42);
   margin-top: 12px;
   border-radius: 4px;
-  animation: expandWidth 0.6s ease-out;
+  animation: zyline-services-expandWidth 0.6s ease-out;
 }
 
-@keyframes expandWidth {
+@keyframes zyline-services-expandWidth {
   from { width: 0; }
   to { width: 70px; }
 }
 
-.text-center .section-title:after {
+.text-center .zyline-services-section-title:after {
   margin-left: auto;
   margin-right: auto;
 }
 
-.badge-service {
-  background: rgba(255, 107, 53, 0.1);
-  color: #ff6b35;
-  font-weight: 600;
-  padding: 0.5rem 1rem;
-  border-radius: 50px;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-}
-
 /* Floating Icon Animation */
-@keyframes floatIcon {
+@keyframes zyline-services-floatIcon {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
 }
 
-.floating-icon {
-  animation: floatIcon 3s ease-in-out infinite;
+.zyline-services-floating-icon {
+  animation: zyline-services-floatIcon 3s ease-in-out infinite;
 }
 
 /* ========================================
    RESPONSIVE DESIGN
 ======================================== */
 @media (max-width: 992px) {
-  .hero-title { font-size: 3rem; }
-  .hero-subtitle { font-size: 1.1rem; }
-  .hero-stats { gap: 1.5rem; }
-  .stat-number { font-size: 1.4rem; }
-  .services-title { font-size: 2.2rem; }
-  .lightbox-prev { left: -50px; width: 40px; height: 40px; font-size: 1.2rem; }
-  .lightbox-next { right: -50px; width: 40px; height: 40px; font-size: 1.2rem; }
-  .lightbox-close { top: -30px; right: -30px; width: 35px; height: 35px; font-size: 1.2rem; }
+  .zyline-services-hero-title { font-size: 3rem; }
+  .zyline-services-hero-subtitle { font-size: 1.1rem; }
+  .zyline-services-hero-stats { gap: 1.5rem; }
+  .zyline-services-stat-number { font-size: 1.4rem; }
+  .zyline-services-title { font-size: 2.2rem; }
+  .zyline-services-lightbox-prev { left: -50px; width: 40px; height: 40px; font-size: 1.2rem; }
+  .zyline-services-lightbox-next { right: -50px; width: 40px; height: 40px; font-size: 1.2rem; }
+  .zyline-services-lightbox-close { top: -30px; right: -30px; width: 35px; height: 35px; font-size: 1.2rem; }
 }
 
 @media (max-width: 768px) {
-  .services-hero {
+  .zyline-services-hero {
     min-height: 90vh;
     background-attachment: scroll;
   }
-  .hero-title { font-size: 2.2rem; }
-  .hero-subtitle { font-size: 0.95rem; }
-  .hero-buttons { flex-direction: column; align-items: center; }
-  .btn-hero-primary, .btn-hero-outline { width: 80%; text-align: center; }
-  .hero-stats { gap: 0.8rem; }
-  .stat-item { padding: 0.4rem 0.8rem; }
-  .stat-number { font-size: 1rem; }
-  .stat-label { font-size: 0.6rem; }
-  .service-icon { width: 60px; height: 60px; }
-  .service-icon i { font-size: 1.8rem; }
-  .services-title { font-size: 1.8rem; }
-  .services-subtitle { font-size: 1rem; }
-  .gallery-item img { height: 200px; }
-  .scroll-indicator { display: none; }
-  .lightbox-prev { left: 10px; width: 40px; height: 40px; }
-  .lightbox-next { right: 10px; width: 40px; height: 40px; }
-  .lightbox-close { top: 10px; right: 10px; }
-  .lightbox-image { max-height: 70vh; }
+  .zyline-services-hero-title { font-size: 2.2rem; }
+  .zyline-services-hero-subtitle { font-size: 0.95rem; }
+  .zyline-services-hero-buttons { flex-direction: column; align-items: center; }
+  .zyline-services-btn-hero-primary { width: 80%; text-align: center; }
+  .zyline-services-hero-stats { gap: 0.8rem; }
+  .zyline-services-stat-item { padding: 0.4rem 0.8rem; }
+  .zyline-services-stat-number { font-size: 1rem; }
+  .zyline-services-stat-label { font-size: 0.6rem; }
+  .zyline-services-icon { width: 60px; height: 60px; }
+  .zyline-services-icon i { font-size: 1.8rem; }
+  .zyline-services-title { font-size: 1.8rem; }
+  .zyline-services-subtitle { font-size: 1rem; }
+  .zyline-services-gallery-item img { height: 200px; }
+  .zyline-services-scroll-indicator { display: none; }
+  .zyline-services-lightbox-prev { left: 10px; width: 40px; height: 40px; }
+  .zyline-services-lightbox-next { right: 10px; width: 40px; height: 40px; }
+  .zyline-services-lightbox-close { top: 10px; right: 10px; }
+  .zyline-services-lightbox-image { max-height: 70vh; }
 }

@@ -12,7 +12,7 @@ const Services = () => {
     });
   }, []);
 
-  // Gallery data - 9 local images - CORRECTED PATHS (using /assets/services/)
+  // Gallery data - 9 local images
   const galleryItems = useMemo(() => [
     { image: "/assets/services/truck0.jpg", title: "Zyline Transportation Services" },
     { image: "/assets/services/truck00.jpg", title: "Zyline Transportation Services"},
@@ -37,7 +37,7 @@ const Services = () => {
   const updateLightboxContent = useCallback(() => {
     const item = galleryItems[currentIndex];
     if (lightboxImageRef.current) lightboxImageRef.current.src = item.image;
-    if (lightboxCaptionRef.current) lightboxCaptionRef.current.textContent = item.caption;
+    if (lightboxCaptionRef.current) lightboxCaptionRef.current.textContent = item.title;
     if (lightboxCounterRef.current) lightboxCounterRef.current.textContent = `${currentIndex + 1} of ${galleryItems.length}`;
   }, [currentIndex, galleryItems]);
 
@@ -113,60 +113,63 @@ const Services = () => {
 
   return (
     <>
+      {/* SPACER FOR FIXED NAVBAR - Adjust height based on your navbar height */}
+      <div className="zyline-services-nav-spacer"></div>
+      
       {/* SECTION 1: HERO SECTION */}
-      <section className="services-hero">
-        <div className="container hero-content">
+      <section className="zyline-services-hero">
+        <div className="container zyline-services-hero-content">
           <div className="text-center" data-aos="fade-up" data-aos-duration="800">
-            <span className="hero-badge">✦ ZYLINE TRANSPORTATION SERVICES LLC ✦</span>
-            <h1 className="hero-title fw-bold">OUR SERVICES</h1>
-            <p className="hero-subtitle mx-auto">Transportation Services Built for Your Business</p>
+            <span className="zyline-services-hero-badge">✦ ZYLINE TRANSPORTATION SERVICES LLC ✦</span>
+            <h1 className="zyline-services-hero-title fw-bold">OUR SERVICES</h1>
+            <p className="zyline-services-hero-subtitle mx-auto">Transportation Services Built for Your Business</p>
 
-            <div className="hero-buttons">
-              <a href="#services" className="btn-hero-primary">
+            <div className="zyline-services-hero-buttons">
+              <a href="#services" className="zyline-services-btn-hero-primary">
                 Explore Services <i className="bi bi-arrow-right ms-2"></i>
               </a>
             </div>
 
-            <div className="hero-stats">
-              <div className="stat-item">
-                <span className="stat-number">50+</span>
-                <span className="stat-label">States Covered</span>
+            <div className="zyline-services-hero-stats">
+              <div className="zyline-services-stat-item">
+                <span className="zyline-services-stat-number">50+</span>
+                <span className="zyline-services-stat-label">States Covered</span>
               </div>
-              <div className="stat-item">
-                <span className="stat-number">500+</span>
-                <span className="stat-label">Partners</span>
+              <div className="zyline-services-stat-item">
+                <span className="zyline-services-stat-number">500+</span>
+                <span className="zyline-services-stat-label">Partners</span>
               </div>
-              <div className="stat-item">
-                <span className="stat-number">98%</span>
-                <span className="stat-label">On-Time Delivery</span>
+              <div className="zyline-services-stat-item">
+                <span className="zyline-services-stat-number">98%</span>
+                <span className="zyline-services-stat-label">On-Time Delivery</span>
               </div>
-              <div className="stat-item">
-                <span className="stat-number">24/7</span>
-                <span className="stat-label">Support</span>
+              <div className="zyline-services-stat-item">
+                <span className="zyline-services-stat-number">24/7</span>
+                <span className="zyline-services-stat-label">Support</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="scroll-indicator" onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}>
-          <div className="mouse"></div>
+        <div className="zyline-services-scroll-indicator" onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}>
+          <div className="zyline-services-mouse"></div>
         </div>
       </section>
 
       {/* SECTION 2: SERVICES GRID */}
       <section className="container py-5" id="services">
-        <div className="services-header" data-aos="fade-up">
-          <h2 className="services-title">OUR SERVICES</h2>
-          <p className="services-subtitle">Transportation Services Built for Your Business</p>
+        <div className="zyline-services-header" data-aos="fade-up">
+          <h2 className="zyline-services-title">OUR SERVICES</h2>
+          <p className="zyline-services-subtitle">Transportation Services Built for Your Business</p>
         </div>
 
         <div className="row g-4">
           {services.map((service, index) => (
             <div className="col-md-6 col-lg-4" key={index} data-aos="fade-up" data-aos-delay={100 + index * 50}>
-              <div className="service-card p-4">
-                <div className="service-icon"><i className={`bi ${service.icon}`}></i></div>
-                <h4 className="service-title">{service.title}</h4>
-                <p className="service-description">{service.description}</p>
+              <div className="zyline-services-card p-4">
+                <div className="zyline-services-icon"><i className={`bi ${service.icon}`}></i></div>
+                <h4 className="zyline-services-card-title">{service.title}</h4>
+                <p className="zyline-services-card-description">{service.description}</p>
               </div>
             </div>
           ))}
@@ -175,18 +178,18 @@ const Services = () => {
 
       {/* SECTION 3: FLEET GALLERY */}
       <section className="container my-5">
-        <div className="gallery-section p-5" data-aos="fade-up">
+        <div className="zyline-services-gallery-section p-5" data-aos="fade-up">
           <div className="text-center mb-5">
-            <h2 className="section-title d-inline-block text-center">Our Fleet Gallery</h2>
+            <h2 className="zyline-services-section-title d-inline-block text-center">Our Fleet Gallery</h2>
             <p className="text-secondary mt-3">Click on any image to view in full size with navigation</p>
           </div>
           <div className="row g-4" id="gallery-container">
             {galleryItems.map((item, index) => (
               <div className="col-md-6 col-lg-4" key={index} data-aos="zoom-in" data-aos-delay={100 + index * 50}>
-                <div className="gallery-item" onClick={() => openLightbox(index)}>
+                <div className="zyline-services-gallery-item" onClick={() => openLightbox(index)}>
                   <img src={item.image} alt={`Fleet Truck ${index + 1}`} />
-                  <div className="zoom-icon"><i className="bi bi-search"></i></div>
-                  <div className="gallery-overlay"><p>Zyline Transportation Services</p></div>
+                  <div className="zyline-services-zoom-icon"><i className="bi bi-search"></i></div>
+                  <div className="zyline-services-gallery-overlay"><p>Zyline Transportation Services</p></div>
                 </div>
               </div>
             ))}
@@ -196,29 +199,29 @@ const Services = () => {
 
       {/* Custom Lightbox Modal */}
       {lightboxOpen && (
-        <div className="lightbox-overlay active" ref={lightboxRef} onClick={handleLightboxClick}>
-          <div className="lightbox-container">
-            <button className="lightbox-close" onClick={closeLightbox}><i className="bi bi-x-lg"></i></button>
-            <button className="lightbox-prev" onClick={prevImage}><i className="bi bi-chevron-left"></i></button>
-            <img className="lightbox-image" ref={lightboxImageRef} src="" alt="" />
-            <button className="lightbox-next" onClick={nextImage}><i className="bi bi-chevron-right"></i></button>
-            <div className="lightbox-caption" ref={lightboxCaptionRef}></div>
-            <div className="lightbox-counter" ref={lightboxCounterRef}></div>
+        <div className="zyline-services-lightbox-overlay active" ref={lightboxRef} onClick={handleLightboxClick}>
+          <div className="zyline-services-lightbox-container">
+            <button className="zyline-services-lightbox-close" onClick={closeLightbox}><i className="bi bi-x-lg"></i></button>
+            <button className="zyline-services-lightbox-prev" onClick={prevImage}><i className="bi bi-chevron-left"></i></button>
+            <img className="zyline-services-lightbox-image" ref={lightboxImageRef} src="" alt="" />
+            <button className="zyline-services-lightbox-next" onClick={nextImage}><i className="bi bi-chevron-right"></i></button>
+            <div className="zyline-services-lightbox-caption" ref={lightboxCaptionRef}></div>
+            <div className="zyline-services-lightbox-counter" ref={lightboxCounterRef}></div>
           </div>
         </div>
       )}
 
       {/* SECTION 4: WHY CHOOSE US */}
       <section className="container my-5">
-        <div className="why-choose-us p-5" data-aos="fade-up">
+        <div className="zyline-services-why-choose-us p-5" data-aos="fade-up">
           <div className="row align-items-center">
             <div className="col-lg-7 mb-4 mb-lg-0">
-              <span className="badge-service d-inline-block mb-3">✦ WHY CHOOSE US</span>
+              <span className="zyline-services-badge d-inline-block mb-3">✦ WHY CHOOSE US</span>
               <h2 className="display-6 fw-bold" style={{ color: "#0a2e3d" }}>Why Businesses Trust Zyline Transportation Services LLC</h2>
               <div className="row mt-4">
                 <div className="col-md-6">
                   {trustPoints.slice(0, 5).map((point, i) => (
-                    <div className="check-item" key={i}>
+                    <div className="zyline-services-check-item" key={i}>
                       <i className="bi bi-check-circle-fill"></i>
                       <span>{point}</span>
                     </div>
@@ -226,7 +229,7 @@ const Services = () => {
                 </div>
                 <div className="col-md-6">
                   {trustPoints.slice(5).map((point, i) => (
-                    <div className="check-item" key={i}>
+                    <div className="zyline-services-check-item" key={i}>
                       <i className="bi bi-check-circle-fill"></i>
                       <span>{point}</span>
                     </div>
@@ -238,9 +241,9 @@ const Services = () => {
               </div>
             </div>
             <div className="col-lg-5 text-center">
-              <i className="bi bi-truck-front display-1 floating-icon" style={{ color: "#ff6b35", opacity: 0.3 }}></i>
-              <i className="bi bi-arrow-repeat display-1 mx-3 floating-icon" style={{ color: "#ff8c42", opacity: 0.3, animationDelay: "0.5s" }}></i>
-              <i className="bi bi-clock-history display-1 floating-icon" style={{ color: "#ff6b35", opacity: 0.3, animationDelay: "1s" }}></i>
+              <i className="bi bi-truck-front display-1 zyline-services-floating-icon" style={{ color: "#ff6b35", opacity: 0.3 }}></i>
+              <i className="bi bi-arrow-repeat display-1 mx-3 zyline-services-floating-icon" style={{ color: "#ff8c42", opacity: 0.3, animationDelay: "0.5s" }}></i>
+              <i className="bi bi-clock-history display-1 zyline-services-floating-icon" style={{ color: "#ff6b35", opacity: 0.3, animationDelay: "1s" }}></i>
             </div>
           </div>
         </div>
@@ -248,7 +251,7 @@ const Services = () => {
 
       {/* SECTION 5: MISSION SECTION */}
       <section className="container my-5">
-        <div className="mission-section p-5 text-white text-center" data-aos="flip-up">
+        <div className="zyline-services-mission-section p-5 text-white text-center" data-aos="flip-up">
           <h2 className="display-6 fw-bold mb-3">OUR MISSION</h2>
           <p className="fs-4 fw-semibold mb-2">Reliable Transportation. Long-Term Partnerships.</p>
           <p className="lead opacity-75 mx-auto" style={{ maxWidth: "800px" }}>

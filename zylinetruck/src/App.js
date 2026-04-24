@@ -4,7 +4,8 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer'
 import About from './Pages/About';
-import Service from './Pages/Service'
+import Service from './Pages/Service';
+import Contact from './Pages/Contact'
 function App() {
   return (
     <div className="app-wrapper">
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/about" element={<About />} />
           <Route path="/service" element={<Service />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
 <Footer/>
