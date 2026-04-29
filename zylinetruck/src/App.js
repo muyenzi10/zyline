@@ -1,25 +1,24 @@
-
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
-import Footer from './components/Footer'
+import Footer from './components/Footer';
 import About from './Pages/About';
 import Service from './Pages/Service';
-import Contact from './Pages/Contact'
+import Contact from './Pages/Contact';
+
 function App() {
   return (
     <div className="app-wrapper">
       <Navbar/>
-
       <main className="main-content">
         <Routes>
-          <Route path="/about" element={<About />} />
+          <Route path="/" element={<About />} />        {/* Show About at root */}
+          <Route path="/about" element={<About />} />   {/* Also show About at /about */}
           <Route path="/service" element={<Service />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
-<Footer/>
-      
+      <Footer/>
     </div>
   );
 }

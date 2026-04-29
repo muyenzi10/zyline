@@ -13,7 +13,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const path = location.pathname;
-    if (path === '/about') {
+    if (path === '/' || path === '/about') {
       setActiveLink('about');
     } else if (path === '/service') {
       setActiveLink('service');
