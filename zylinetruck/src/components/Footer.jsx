@@ -59,7 +59,6 @@ const Footer = () => {
         <div className="footer-section">
           <h3 className="footer-title">Quick Links</h3>
           <ul className="footer-links">
-            <li><Link to="/" onClick={scrollToTop}>Home</Link></li>
             <li><Link to="/about" onClick={scrollToTop}>About Us</Link></li>
             <li><Link to="/service" onClick={scrollToTop}>Transportation Services</Link></li>
             <li><Link to="/contact" onClick={scrollToTop}>Contact Us</Link></li>
@@ -90,7 +89,7 @@ const Footer = () => {
               <svg className="contact-icon" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
               </svg>
-              <a href="mailto:dispatch@zyline.com">dispatch@zyline.com</a>
+              <a href="mailto:dispatch@zyline.com">Zyline@Transportationseervices.com</a>
             </li>
             <li>
               <svg className="contact-icon" viewBox="0 0 24 24" fill="currentColor">
@@ -106,11 +105,7 @@ const Footer = () => {
       <div className="footer-bottom">
         <div className="footer-bottom-container">
           <p>&copy; {currentYear} Zyline Transportation Services LLC. Founded August 2020. All rights reserved.</p>
-          <div className="footer-legal">
-            <a href="/privacy">Privacy Policy</a>
-            <a href="/terms">Terms of Service</a>
-            <a href="/dispatch">Dispatch Services</a>
-          </div>
+          
         </div>
       </div>
     </footer>

@@ -22,7 +22,7 @@ const Services = () => {
     { image: "/assets/services/truck6.png", title: "Zyline Transportation Services"},
     { image: "/assets/services/truck7.jpg", title: "Zyline Transportation Services" },
     { image: "/assets/services/truck8.png", title: "Zyline Transportation Services" },
-    { image: "/assets/services/truck9.jpeg", title: "Zyline Transportation Services" }
+    { image: "/assets/services/truck9.png", title: "Zyline Transportation Services" }
   ], []);
 
   // Lightbox state

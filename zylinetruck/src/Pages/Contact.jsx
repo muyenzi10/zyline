@@ -1,10 +1,15 @@
 import React, { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import { FaInstagram, FaFacebookF, FaTwitter, FaEnvelope } from 'react-icons/fa';
 import { FaHeadset, FaCertificate, FaBolt, FaTruck, FaTrailer, FaDoorOpen, FaBuilding, FaPhoneAlt, FaEnvelopeOpenText, FaClock, FaShieldAlt, FaStar, FaCheckCircle, FaMapPin, FaPaperPlane, FaSpinner, FaMapMarkerAlt } from 'react-icons/fa';
 import './Contact.css';
 
+// Replace these with your actual EmailJS credentials
+const EMAILJS_SERVICE_ID = 'service_i2nghk7';      // Get from EmailJS dashboard
+const EMAILJS_TEMPLATE_ID = 'template_52jc7j8';    // Get from EmailJS dashboard  
+const EMAILJS_PUBLIC_KEY = 'eFQ_T5QSvpxwvDNEQ';      // Get from EmailJS dashboard
+
 const Contact = () => {
-  // Form state
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -18,7 +23,6 @@ const Contact = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [feedback, setFeedback] = useState({ message: '', type: '' });
-  
   const formRef = useRef(null);
 
   // Validation functions
@@ -56,7 +60,6 @@ const Contact = () => {
     return locationRegex.test(trimmed);
   };
 
-  // Validate form
   const validateForm = () => {
     const newErrors = {};
     
@@ -100,7 +103,6 @@ const Contact = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  // Handle input change
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -131,19 +133,31 @@ const Contact = () => {
     
     setIsSubmitting(true);
     
-    const leadData = {
-      ...formData,
-      timestamp: new Date().toISOString(),
+    // Prepare template parameters for email
+    const templateParams = {
+      from_name: `${formData.firstName} ${formData.lastName}`,
+      from_email: formData.email,
+      phone: formData.phone,
+      state: formData.state,
+      pickup_location: formData.location,
+      message: formData.message || 'No additional details provided',
       company: "Zyline Transportation Services LLC",
-      officeAddress: "1581 West Alsace Way, West Valley, Utah 84119"
+      submission_date: new Date().toLocaleString()
     };
     
     try {
-      console.log('Zyline Transport lead:', leadData);
-      await new Promise(resolve => setTimeout(resolve, 600));
+      const response = await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      );
       
-      showMessage(`✅ Thanks ${formData.firstName}! A transport agent will contact you shortly with a quote. We'll contact you at ${formData.email} and ${formData.phone} for pickup at "${formData.location}" (${formData.state}) within 1 hour.`, 'success');
+      console.log('Email sent successfully!', response);
       
+      showMessage(`✅ Thanks ${formData.firstName}! Your quote request has been sent. We'll contact you at ${formData.email} within 1 hour.`, 'success');
+      
+      // Reset form
       setFormData({
         firstName: '',
         lastName: '',
@@ -155,8 +169,9 @@ const Contact = () => {
       });
       clearFieldErrors();
       
-    } catch (err) {
-      showMessage('⚠️ Temporary issue. Please call dispatch directly.', 'error');
+    } catch (error) {
+      console.error('Email send error:', error);
+      showMessage('⚠️ Unable to send message. Please call us directly or try again later.', 'error');
     } finally {
       setIsSubmitting(false);
     }
@@ -164,18 +179,16 @@ const Contact = () => {
 
   return (
     <>
-      {/* SPACER FOR FIXED NAVBAR */}
       <div className="zyline-contact-nav-spacer"></div>
       
       <section className="zyline-contact-section">
         <div className="zyline-contact-orange-accent-top"></div>
         <div className="container">
           <div className="row g-4 align-items-stretch">
-            {/* LEFT COLUMN: Contact Form */}
             <div className="col-lg-6">
               <div className="zyline-contact-card">
                 <div className="zyline-contact-section-badge">
-                  <FaHeadset className="me-1" /> 24/7 Dispatch
+                  <FaHeadset className="me-1" /> 24/7 Support
                 </div>
                 <div className="zyline-contact-business-name">Zyline <span>Transportation Services</span> LLC</div>
                 <div className="zyline-contact-company-tag"><FaCertificate /> Licensed & Premium Fleet</div>
@@ -249,7 +262,7 @@ const Contact = () => {
                           id="email"
                           name="email"
                           className={`zyline-contact-form-control ${errors.email ? 'is-invalid' : ''}`}
-                          placeholder="hello@zyline.com"
+                          placeholder="Enter Your Email"
                           value={formData.email}
                           onChange={handleChange}
                           autoComplete="email"
@@ -343,50 +356,27 @@ const Contact = () => {
               </div>
             </div>
             
-            {/* RIGHT COLUMN: Contact Information & Social Media */}
             <div className="col-lg-5 offset-lg-1">
               <div className="zyline-contact-info-card">
                 <h4><FaTruck className="me-2" /> Zyline Services</h4>
                 <div className="zyline-contact-info-list">
                   <p><FaBuilding /> <span><strong>Zyline Transportation Services LLC</strong><br />1581 West Alsace Way<br />West Valley, Utah 84119</span></p>
                   <p><FaPhoneAlt /> <span><strong>+1 (816) 437 5248</strong></span></p>
-                  <p><FaEnvelopeOpenText /> <span>dispatch@zyline-transport.com</span></p>
-                  <p><FaClock /> <span>24/7 Dispatch — We never sleep</span></p>
+                  <p><FaEnvelopeOpenText /> <span>Zyline@Transportationseervices.com</span></p>
+                  <p><FaClock /> <span>24/7 Support — We never sleep</span></p>
                 </div>
                 
                 <div className="zyline-contact-social-links">
-                  <a 
-                    href="https://www.instagram.com/zyline.transport" 
-                    className="zyline-contact-social-instagram" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    aria-label="Instagram"
-                  >
+                  <a href="https://www.instagram.com/zyline.transport" className="zyline-contact-social-instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                     <FaInstagram />
                   </a>
-                  <a 
-                    href="https://www.facebook.com/zyline.transport" 
-                    className="zyline-contact-social-facebook" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    aria-label="Facebook"
-                  >
+                  <a href="https://www.facebook.com/zyline.transport" className="zyline-contact-social-facebook" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                     <FaFacebookF />
                   </a>
-                  <a 
-                    href="https://www.twitter.com/zyline_transport" 
-                    className="zyline-contact-social-twitter" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    aria-label="Twitter"
-                  >
+                  <a href="https://www.twitter.com/zyline_transport" className="zyline-contact-social-twitter" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
                     <FaTwitter />
                   </a>
-                  <a 
-                    href="mailto:dispatch@zyline-transport.com" 
-                    className="zyline-contact-social-email" 
-                    aria-label="Email Us"
-                  >
+                  <a href="mailto:dispatch@zyline-transport.com" className="zyline-contact-social-email" aria-label="Email Us">
                     <FaEnvelope />
                   </a>
                 </div>

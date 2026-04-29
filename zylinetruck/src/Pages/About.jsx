@@ -85,7 +85,7 @@ const About = () => {
                     <div className="col">
                       <div className="d-flex align-items-center gap-2">
                         <i className="bi bi-check-circle-fill text-warning"></i> 
-                        <span>24/7 dispatch support</span>
+                        <span>24/7 support</span>
                       </div>
                     </div>
                   </div>
@@ -181,7 +181,7 @@ const About = () => {
               <p className="text-secondary mt-2">Whether handling local routes or long-distance deliveries, every shipment is managed with care, precision, and urgency.</p>
             </div>
             <div className="col-md-4 text-md-end">
-              <a href="/view" className="about-btn-outline">View all services <i className="bi bi-arrow-right-short"></i></a>
+              <a href="/service" className="about-btn-outline">View all services <i className="bi bi-arrow-right-short"></i></a>
             </div>
           </div>
           <div className="row g-4">
@@ -203,7 +203,7 @@ const About = () => {
               <div className="about-service-card p-4 h-100">
                 <i className="bi bi-clock about-service-icon"></i>
                 <h4 className="h5 fw-bold mt-3">Expedited Shipping</h4>
-                <p className="text-secondary">Time-critical deliveries with priority dispatch and real-time tracking.</p>
+                <p className="text-secondary">Time-critical deliveries with priority  and real-time tracking.</p>
               </div>
             </div>
           </div>
@@ -223,7 +223,7 @@ const About = () => {
             <div className="col-lg-4 text-center mt-4 mt-lg-0">
               <i className="bi bi-people-fill fs-1 opacity-25" style={{color: "#0a2e3d"}}></i>
               <div className="bg-warning bg-opacity-10 rounded-4 p-3 mt-2">
-                <p className="mb-0 fw-semibold">"When your freight matters, you can count on Zyline."</p>
+                <p className="mb-0 fw-semibold">"When your freight matters, you can count on Zyline Transportation services."</p>
               </div>
             </div>
           </div>
@@ -236,13 +236,7 @@ const About = () => {
                 <i className="bi bi-quote display-1 text-warning opacity-50"></i>
                 <p className="fs-4 fw-medium mt-3">Zyline Transportation has been a game-changer for our distribution network — on-time delivery and exceptional communication. They truly care about our deadlines.</p>
                 <div className="d-flex justify-content-center align-items-center gap-3 mt-4">
-                  <div className="bg-warning rounded-circle d-flex align-items-center justify-content-center" style={{width: "45px", height: "45px"}}>
-                    <i className="bi bi-person-fill text-dark"></i>
-                  </div>
-                  <div className="text-start">
-                    <strong>Marcus Reynolds</strong><br />
-                    <span className="small text-secondary">Logistics Director, Allied Retail Group</span>
-                  </div>
+                  
                 </div>
               </div>
             </div>

@@ -5,7 +5,7 @@ import logo from './logo.png'
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState('home');
+  const [activeLink, setActiveLink] = useState('about');
   const navMenuRef = useRef(null);
   const hamburgerRef = useRef(null);
   const navigate = useNavigate();
@@ -13,9 +13,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const path = location.pathname;
-    if (path === '/' || path === '/home') {
-      setActiveLink('home');
-    } else if (path === '/about') {
+    if (path === '/about') {
       setActiveLink('about');
     } else if (path === '/service') {
       setActiveLink('service');
@@ -74,7 +72,7 @@ const Navbar = () => {
     <>
       <nav className="zyline-navbar" aria-label="Main navigation">
         <div className="zyline-nav-container">
-          <Link to="/" className="zyline-logo" onClick={() => handleNavigation('/', 'home')}>
+          <Link to="/about" className="zyline-logo" onClick={() => handleNavigation('/about', 'about')}>
             <img src={logo} alt="Zyline Logo" className="zyline-logo-img" />
             <span className="zyline-logo-text">Zyline Transportation Services</span>
           </Link>
@@ -95,15 +93,6 @@ const Navbar = () => {
             ref={navMenuRef}
             className={`zyline-nav-menu ${isMobileMenuOpen ? 'active' : ''}`}
           >
-            <li>
-              <Link 
-                to="/"
-                className={`zyline-nav-link ${activeLink === 'home' ? 'active' : ''}`}
-                onClick={() => handleNavigation('/', 'home')}
-              >
-                Home
-              </Link>
-            </li>
             <li>
               <Link 
                 to="/about"
