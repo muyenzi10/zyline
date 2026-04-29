@@ -223,7 +223,7 @@ const About = () => {
             <div className="col-lg-4 text-center mt-4 mt-lg-0">
               <i className="bi bi-people-fill fs-1 opacity-25" style={{color: "#0a2e3d"}}></i>
               <div className="bg-warning bg-opacity-10 rounded-4 p-3 mt-2">
-                <p className="mb-0 fw-semibold">"When your freight matters, you can count on Zyline Transportation services."</p>
+                <p className="mb-0 fw-semibold">"When your freight matters, you can count on Zyline Transportation service."</p>
               </div>
             </div>
           </div>
@@ -234,7 +234,7 @@ const About = () => {
             <div className="row justify-content-center text-center">
               <div className="col-md-10">
                 <i className="bi bi-quote display-1 text-warning opacity-50"></i>
-                <p className="fs-4 fw-medium mt-3">Zyline Transportation has been a game-changer for our distribution network — on-time delivery and exceptional communication. They truly care about our deadlines.</p>
+                <p className="fs-4 fw-medium mt-3">Zyline Transportation Service has been a game-changer for our distribution network — on-time delivery and exceptional communication. They truly care about our deadlines.</p>
                 <div className="d-flex justify-content-center align-items-center gap-3 mt-4">
                   
                 </div>

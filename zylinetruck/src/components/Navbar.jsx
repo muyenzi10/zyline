@@ -74,7 +74,7 @@ const Navbar = () => {
         <div className="zyline-nav-container">
           <Link to="/about" className="zyline-logo" onClick={() => handleNavigation('/about', 'about')}>
             <img src={logo} alt="Zyline Logo" className="zyline-logo-img" />
-            <span className="zyline-logo-text">Zyline Transportation Services</span>
+            <span className="zyline-logo-text">Zyline Transportation Service</span>
           </Link>
           
           <button 

@@ -20,7 +20,7 @@ const Footer = () => {
             <div className="logo-icon">
               <FaShuttleVan /> 
             </div>
-            <span className="logo-text">Zyline transportation services LLC</span>
+            <span className="logo-text">Zyline transportation service LLC</span>
           </div>
           <p className="footer-description">
             Zyline Transportation Services LLC was founded in August 2020. We provide reliable, 
@@ -60,7 +60,7 @@ const Footer = () => {
           <h3 className="footer-title">Quick Links</h3>
           <ul className="footer-links">
             <li><Link to="/about" onClick={scrollToTop}>About Us</Link></li>
-            <li><Link to="/service" onClick={scrollToTop}>Transportation Services</Link></li>
+            <li><Link to="/service" onClick={scrollToTop}>Transportation Service</Link></li>
             <li><Link to="/contact" onClick={scrollToTop}>Contact Us</Link></li>
           </ul>
         </div>
